@@ -9,10 +9,20 @@ function register_my_menus() {
         'pages' => __( 'Footer Pages' ),
         'company' => __( 'Footer Company' ),
         'contact' => __( 'Footer Contact' ),
+        'terms' => __( 'Footer Terms' ),
+        'second-header' => __( 'Second Header Menu' ),
       )
     );
   }
-  add_action( 'init', 'register_my_menus' );
+add_action( 'init', 'register_my_menus' );
+
+
+/**
+ * Enable Options Page for ACF plugin
+ */
+if( function_exists('acf_add_options_page') ) {
+	acf_add_options_page();	
+}
 
 /*
 * Enqueue Assets
