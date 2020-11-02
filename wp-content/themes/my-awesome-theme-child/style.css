@@ -1,6 +1,6 @@
 /*
 Theme Name:     My Awesome Theme Child
-Author:         Nunzio RUffo
+Author:         Nunzio Ruffo
 Author URI:     https://lazrof.github.io/react-portfolio/
 Description:    Informative site
 Template:       my-awesome-theme
@@ -8,3 +8,30 @@ Version:        1
 Text Domain:    my-awesome-theme
 */
 
+
+ul#primary-menu {
+    padding: 0;
+    display: flex;
+    margin: 0 0 20px 0;
+}
+
+ul#primary-menu li {
+    list-style: none;
+    padding: 10px 15px;
+}
+
+ul#primary-menu li a {
+    color: rgba(0,0,0,0.8);
+}
+
+ul#primary-menu .sub-menu {
+    display: none;
+}
+
+footer ul {
+    padding: 0;
+}
+
+footer ul li {
+    list-style: none;
+}
