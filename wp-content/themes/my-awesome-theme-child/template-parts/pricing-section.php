@@ -10,8 +10,6 @@ if( $show_content && $content):
     
     $cta =  $content['link'];
     if( $cta ){
-        $cta_url = $cta['url'];
-        $cta_title = $cta['title'];
         $cta_target = $cta['target'] ? $cta['target'] : '_self';
     }
 
@@ -20,7 +18,7 @@ if( $show_content && $content):
         $cta_icon_class = 'mai-call-outline';
     }
 
-    $items = $content['items']; ?>
+    $items = $content['prices']; ?>
 
     <div class="page-section bg-image" style="background-image: url(<?php echo $background_image; ?>);">
         <div class="container">
@@ -39,47 +37,49 @@ if( $show_content && $content):
 
                 <?php if( $cta ): ?>
                 <a 
-                    href="<?php echo $cta_url; ?>" 
+                    href="<?php echo $cta['url']; ?>" 
                     target="<?php echo $cta_target; ?>" 
                     class="btn btn-gradient btn-split-icon rounded-pill"> 
-                    <span class="icon <?php echo $cta_icon_class ?>"></span> <?php echo $cta_title; ?>
+                    <span class="icon <?php echo $cta_icon_class ?>"></span> <?php echo $cta['title']; ?>
                 </a>
                 <?php endif; ?>
             </div>
             <div class="col-lg-7">
                 <div class="pricing-table">
-                <div class="pricing-item active wow zoomIn">
-                    <div class="pricing-header">
-                    <h5>Business Plan</h5>
-                    <h1 class="fw-normal">$49.00</h1>
-                    </div>
-                    <div class="pricing-body">
-                    <ul class="theme-list">
-                        <li class="list-item">Push Notification</li>
-                        <li class="list-item">Unlimited Bandwith</li>
-                        <li class="list-item">Realtime Database</li>
-                        <li class="list-item">Monthly Backup</li>
-                        <li class="list-item">24/7 Support</li>
-                    </ul>
-                    </div>
-                    <button class="btn btn-dark">Choose Plan</button>
-                </div>
-                <!-- <div class="pricing-item wow zoomIn" data-wow-delay="200ms">
-                    <div class="pricing-header">
-                    <h5>Starter Plan</h5>
-                    <h1 class="fw-normal">$24.00</h1>
-                    </div>
-                    <div class="pricing-body">
-                    <ul class="theme-list">
-                        <li class="list-item">Push Notification</li>
-                        <li class="list-item">Unlimited Bandwith</li>
-                        <li class="list-item">Realtime Database</li>
-                        <li class="list-item">Monthly Backup</li>
-                        <li class="list-item">24/7 Support</li>
-                    </ul>
-                    </div>
-                    <button class="btn btn-dark">Choose Plan</button>
-                </div> -->
+                    <?php if( $items ) : ?>
+                    <?php foreach( $items as $item ) :
+                        $active_class = empty($item['active_class']) ? '' : 'active';
+                        $benefits = $item['benefits'];
+                        $cta_item =  $item['link'];
+                        if( $cta_item ){
+                            $cta_target_item = $cta_item['target'] ? $cta_item['target'] : '_self';
+                        }
+                        ?>
+
+                        <div class="pricing-item wow zoomIn <?php echo $active_class ?>">
+                            <div class="pricing-header">
+                                <h5><?php echo $item['name'] ?></h5>
+                                <h1 class="fw-normal">$<?php echo $item['price'] ?></h1>
+                            </div>
+
+                            <div class="pricing-body">
+                                
+                                <?php if(!empty($benefits)): ?>
+                                    <ul class="theme-list">
+                                        <?php foreach( $benefits as $benefit ) :?>
+                                        <li class="list-item"><?php echo $benefit['text'] ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                <?php endif; ?>
+
+                            </div>
+                            <?php if( $cta_item ): ?>
+                                <button class="btn btn-dark"><?php echo $cta_item['title']; ?></button>
+                            <?php endif ?>
+
+                        </div>
+                    <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
             </div>
             </div>
