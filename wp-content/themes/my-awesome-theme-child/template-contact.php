@@ -1,7 +1,7 @@
 <?php 
 
 /*
-* Template Name: Image Whit Accordeon
+* Template Name: Contact Form Page
 */
 
 get_header(); ?>
