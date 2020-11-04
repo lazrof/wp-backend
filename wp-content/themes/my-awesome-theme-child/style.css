@@ -44,3 +44,27 @@ ul#menu-footer-terms {
 ul#menu-footer-terms li {
     padding:7px 16px;
 }
+
+ul#menu-second-header-menu {
+    padding: 0;
+    display: flex;
+    margin: 0 0 20px 0;
+    margin-left:auto;
+}
+
+ul#menu-second-header-menu li {
+    list-style: none;
+    padding: 10px 15px;
+}
+
+ul#menu-second-header-menu li a {
+    color: #fff;
+}
+
+.home span {
+    color: rgba(228, 225, 235, 0.7);
+}
+
+span[property="itemListElement"] {
+    margin:0 8px;
+}
