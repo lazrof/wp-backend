@@ -14,9 +14,19 @@
     <?php if(is_front_page()): ?>
     <nav class="navbar navbar-expand-lg navbar-light navbar-floating">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/favicon.png" alt="Logo" width="40" >
+            
+            <?php 
+            $custom_logo_id = get_theme_mod( 'custom_logo' );
+            $image = wp_get_attachment_image_src( $custom_logo_id , 'full' );?>
+
+            <a class="navbar-brand" href="<?php home_url(); ?>">
+            <?php if (!empty($image[0])):?>
+                <img src="<?php echo $image[0]; ?>" alt="Logo" width="40" >
+            <?php else: ?>
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/favicon.png" alt="Logo 1" width="40" >
             </a>
+            <?php endif; ?>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -27,9 +37,22 @@
                 'menu_id'        => 'primary-menu',
                 'container' => '')
             ); ?>
-            <div class="ml-auto my-2 my-lg-0">
-                <button class="btn btn-dark rounded-pill">Download Now</button>
-            </div>
+
+            <?php if(!empty( get_field('home_download_button', 'options') )):
+                $link = get_field('home_download_button', 'options');
+                if( $link )
+                    $link_target = $link['target'] ? $link['target'] : '_self';?>
+
+                <div class="ml-auto my-2 my-lg-0">
+                    <a 
+                        href="<?php echo $link['url']; ?>"
+                        class="btn btn-dark rounded-pill"
+                        target="<?php echo $link_target ?>">
+                        <?php echo $link['title']; ?>
+                    </a>
+                </div>
+
+            <?php endif; ?>
             </div>
         </div>
     </nav>
