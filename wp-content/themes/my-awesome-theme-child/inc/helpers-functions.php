@@ -2,7 +2,7 @@
 
 function get_acf_image_alt($acf_img_array){
     if(!empty( $acf_img_array['alt'] )) {
-        $img_alt = $img['alt'];
+        $img_alt = $acf_img_array['alt'];
     } else {
         $img_alt = $acf_img_array['title'];
     }

@@ -35,3 +35,12 @@ footer ul {
 footer ul li {
     list-style: none;
 }
+
+ul#menu-footer-terms {
+    display: flex;
+    justify-content: flex-end;
+}
+
+ul#menu-footer-terms li {
+    padding:7px 16px;
+}

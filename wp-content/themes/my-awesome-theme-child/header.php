@@ -11,24 +11,28 @@
 </head>
 <body <?php body_class(); ?>>
 
+    <?php if(is_front_page()): ?>
     <nav class="navbar navbar-expand-lg navbar-light navbar-floating">
-    <div class="container">
-        <a class="navbar-brand" href="#">
-        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/favicon.png" alt="Logo" width="40" >
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-    
-        <div class="collapse navbar-collapse" id="navbarToggler">
-        <?php wp_nav_menu(array(
-            'theme_location' => 'menu-1',
-            'menu_id'        => 'primary-menu',
-            'container' => '')
-        ); ?>
-        <div class="ml-auto my-2 my-lg-0">
-            <button class="btn btn-dark rounded-pill">Download Now</button>
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/favicon.png" alt="Logo" width="40" >
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarToggler">
+            <?php wp_nav_menu(array(
+                'theme_location' => 'menu-1',
+                'menu_id'        => 'primary-menu',
+                'container' => '')
+            ); ?>
+            <div class="ml-auto my-2 my-lg-0">
+                <button class="btn btn-dark rounded-pill">Download Now</button>
+            </div>
+            </div>
         </div>
-        </div>
-    </div>
     </nav>
+    <?php else: ?>
+    
+    <?php endif; ?>

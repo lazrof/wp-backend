@@ -19,8 +19,8 @@ if ( have_posts() ) :
 
 	<?php endwhile; ?>
 
-	<?php else: ?>
-    <h4>Sorry, no posts were found</h4>
+<?php else: ?>
+	<h4>Sorry, no posts were found</h4>
 
 <?php 
 endif;
