@@ -19,13 +19,14 @@
             $custom_logo_id = get_theme_mod( 'custom_logo' );
             $image = wp_get_attachment_image_src( $custom_logo_id , 'full' );?>
 
-            <a class="navbar-brand" href="<?php home_url(); ?>">
+            <a class="navbar-brand" href="/">
             <?php if (!empty($image[0])):?>
                 <img src="<?php echo $image[0]; ?>" alt="Logo" width="40" >
             <?php else: ?>
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/favicon.png" alt="Logo 1" width="40" >
-            </a>
             <?php endif; ?>
+            </a>
+            
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -56,6 +57,37 @@
             </div>
         </div>
     </nav>
+
     <?php else: ?>
+        
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-floating">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/favicon-light.png" alt="" width="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarToggler">
+                <?php wp_nav_menu(array('theme_location' => 'second-header', 'container' => '') ); ?>
+                
+                <?php if(!empty( get_field('default_download_button', 'options') )):
+                    $link = get_field('default_download_button', 'options');
+                    if( $link )
+                        $link_target = $link['target'] ? $link['target'] : '_self';?>
+
+                    <div class="ml-auto my-2 my-lg-0">
+                        <a 
+                            href="<?php echo $link['url']; ?>"
+                            class="btn btn-primary rounded-pill"
+                            target="<?php echo $link_target ?>">
+                            <?php echo $link['title']; ?>
+                        </a>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </nav>
     
     <?php endif; ?>

@@ -15,43 +15,51 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+<main id="primary" class="site-main">
+		
+	<div class="bg-light">
 
-		<?php
-		if ( have_posts() ) :
+		<?php get_template_part('template-parts/partials/hero-banner-default') ?>
+		
+		<div class="page-section">
+			<div class="container">
+				<?php if ( have_posts() ) : ?>
+					<?php while ( have_posts() ) : the_post();
+						
+						the_content(
+							sprintf(
+								wp_kses(
+									/* translators: %s: Name of current post. Only visible to screen readers */
+									__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'my-awesome-theme' ),
+									array(
+										'span' => array(
+											'class' => array(),
+										),
+									)
+								),
+								wp_kses_post( get_the_title() )
+							)
+						);
+				
+						wp_link_pages(
+							array(
+								'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'my-awesome-theme' ),
+								'after'  => '</div>',
+							)
+						);?>
+						
+                	<?php endwhile; ?>
+                
+                <?php the_posts_navigation(); ?>
+                
+				<?php else: ?>
+					<h4>No posts were found.</h4>
+				<?php endif; ?>
+			</div>
+		</div>
+	</div> <!-- .bg-light -->
 
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-				<?php
-			endif;
 
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+</main><!-- #main -->
 
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
-
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
-	</main><!-- #main -->
-
-<?php
-get_sidebar();
-get_footer();
+<?php get_footer(); ?>

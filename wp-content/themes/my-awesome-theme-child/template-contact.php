@@ -5,36 +5,38 @@
 */
 
 get_header(); ?>
-
 <main id="primary" class="site-main">
+		
+	<div class="bg-light">
 
-	<?php
-		if ( have_posts() ) :
+		<?php get_template_part('template-parts/partials/hero-banner-default') ?>
+		
+		<div class="page-section">
+			<div class="container">
+				<?php if ( have_posts() ) : ?>
+					
+					<?php while ( have_posts() ) : the_post();?>
+					<div class="row justify-content-center">
+						
+						<?php get_template_part('template-parts/contact-page/cards') ?>
 
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-				<?php
-			endif;
+						<div class="col-md-6 col-lg-5 my-3 wow fadeInUp">
+							<?php get_template_part('template-parts/forms/contact-form') ?>
+						</div>
+						<div class="col-md-6 col-lg-7 my-3 wow fadeInUp">
+							<?php get_template_part('template-parts/contact-page/map') ?>
+						</div>
+					</div>
+					<?php endwhile; ?>
 
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+				<?php else: ?>
+					<h4>No posts were found.</h4>
+				<?php endif; ?>
+			</div>
+		</div>
+	</div> <!-- .bg-light -->
 
-				the_title();
 
-			endwhile;
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-	?>
-
-	</main><!-- #main -->
-
+</main><!-- #main -->
 
 <?php get_footer(); ?>
