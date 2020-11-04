@@ -1,5 +1,10 @@
 <?php 
 
+function vd($var){
+  var_dump($var);
+  die();
+}
+
 /**
  * Registering Custom Menus
  */
@@ -28,3 +33,8 @@ if( function_exists('acf_add_options_page') ) {
 * Enqueue Assets
 */
 require_once 'inc/wp-enqueue.php';
+
+/*
+* Helper functions
+*/
+require_once 'inc/helpers-functions.php';
