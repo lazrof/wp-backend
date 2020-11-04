@@ -1,10 +1,5 @@
 <?php 
 
-function vd($var){
-  var_dump($var);
-  die();
-}
-
 /**
  * Registering Custom Menus
  */

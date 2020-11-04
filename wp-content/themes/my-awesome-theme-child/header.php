@@ -20,11 +20,13 @@
             $image = wp_get_attachment_image_src( $custom_logo_id , 'full' );?>
 
             <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-            <?php if (!empty($image[0])):?>
-                <img src="<?php echo $image[0]; ?>" alt="Logo" width="40" >
-            <?php else: ?>
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/favicon.png" alt="Logo 1" width="40" >
-            <?php endif; ?>
+
+                <?php if (!empty($image[0])):?>
+                    <img src="<?php echo $image[0]; ?>" alt="Logo" width="40" >
+                <?php else: ?>
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/favicon.png" alt="Logo 1" width="40" >
+                <?php endif; ?>
+                
             </a>
             
 
@@ -63,7 +65,13 @@
     <nav class="navbar navbar-expand-lg navbar-dark navbar-floating">
         <div class="container">
             <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/favicon-light.png" alt="" width="40">
+                
+                <?php if ( !empty(get_field('header_logo', 'options')) ): ?>
+                    <img src="<?php the_field('header_logo', 'options') ?>" alt="Logo" width="40" >
+                <?php else: ?>
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/favicon-light.png" alt="" width="40">
+                <?php endif; ?>
+                
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
