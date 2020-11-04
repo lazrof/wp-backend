@@ -59,6 +59,7 @@
     </nav>
 
     <?php else: ?>
+        
     <nav class="navbar navbar-expand-lg navbar-dark navbar-floating">
         <div class="container">
             <a class="navbar-brand" href="/">
