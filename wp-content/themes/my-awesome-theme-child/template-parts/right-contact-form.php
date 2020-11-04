@@ -16,28 +16,9 @@ if( $show_content && $content): ?>
                 </div>
             </div>
             <div class="col-lg-5 py-3">
-                <h1 class="wow fadeInUp"><?php echo $content['title'] ?></h1>
-
-                <form method="POST" class="mt-5">
-                <div class="form-group wow fadeInUp">
-                    <label for="name" class="fw-medium fg-grey">Fullname</label>
-                    <input type="text" class="form-control" id="name">
-                </div>
-
-                <div class="form-group wow fadeInUp">
-                    <label for="email" class="fw-medium fg-grey">Email</label>
-                    <input type="text" class="form-control" id="email">
-                </div>
-
-                <div class="form-group wow fadeInUp">
-                    <label for="message" class="fw-medium fg-grey">Message</label>
-                    <textarea rows="6" class="form-control" id="message"></textarea>
-                </div>
-
-                <div class="form-group mt-4 wow fadeInUp">
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </div>
-                </form>
+                <?php if ( !empty($content['contact_form_short_code']) ) ?>
+                    <h1 class="wow fadeInUp"><?php echo $content['title'] ?></h1>
+                    <?php echo do_shortcode($content['contact_form_short_code']); ?>
             </div>
             </div>
         </div>

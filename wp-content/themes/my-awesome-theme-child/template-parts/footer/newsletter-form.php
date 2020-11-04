@@ -6,14 +6,6 @@ if( $show_content && $content): ?>
 
     <h5 class="mb-3"><?php echo $content['title'] ?></h5>
     <p><?php echo $content['text'] ?></p>
-
-    <form method="POST">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Your email..">
-            <div class="input-group-append">
-            <button type="submit" class="btn btn-primary"><span class="mai-send"></span></button>
-            </div>
-        </div>
-    </form>
+    <?php echo do_shortcode($content['form_short_code']); ?>
 
 <?php endif; ?>

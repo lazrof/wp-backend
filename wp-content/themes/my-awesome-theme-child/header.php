@@ -19,7 +19,7 @@
             $custom_logo_id = get_theme_mod( 'custom_logo' );
             $image = wp_get_attachment_image_src( $custom_logo_id , 'full' );?>
 
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
             <?php if (!empty($image[0])):?>
                 <img src="<?php echo $image[0]; ?>" alt="Logo" width="40" >
             <?php else: ?>
@@ -62,7 +62,7 @@
         
     <nav class="navbar navbar-expand-lg navbar-dark navbar-floating">
         <div class="container">
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/favicon-light.png" alt="" width="40">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">

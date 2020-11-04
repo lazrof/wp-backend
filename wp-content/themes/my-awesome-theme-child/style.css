@@ -79,3 +79,57 @@ span[property="itemListElement"] {
 .acf-map img {
    max-width: inherit !important;
 }
+
+footer .wpcf7-form button.btn.btn-primary {
+    padding: 0 14px;
+    margin-left: -3px;
+}
+
+footer .wpcf7-form input.wpcf7-form-control.wpcf7-submit {
+    display:none;
+}
+
+footer .wpcf7-form span.wpcf7-form-control-wrap.your-email {
+    width: 86%;
+}
+
+footer .wpcf7-form .input-group-append {
+    height: 46px;
+}
+
+footer span.wpcf7-not-valid-tip {
+    font-size: 14px;
+    color: #e20000;
+}
+
+footer .wpcf7-response-output {
+    margin: 0 !important;
+    margin-top: 10px !important;
+    border-radius: 3px;
+}
+
+.page-section span.wpcf7-not-valid-tip {
+    font-size: 14px;
+    color: #e20000;
+}
+
+.page-section .wpcf7-form br {
+    display:none;
+}
+
+.page-section .wpcf7-response-output {
+    margin: 0 !important;
+    margin-top: 10px !important;
+    border-radius: 3px;
+}
+
+.page-section input.wpcf7-form-control.wpcf7-submit {
+    display:none;
+}
+
+.mai-send::before {
+    position:absolute;
+    top:12px;
+    right:13px;
+    
+}
